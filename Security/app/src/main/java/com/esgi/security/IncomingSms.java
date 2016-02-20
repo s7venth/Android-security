@@ -16,7 +16,7 @@ public class IncomingSms extends BroadcastReceiver {
 
     public static final String SMS_EXTRA_NAME = "pdus";
     public static final String SMS_URI = "data/data/com.android.providers.telephony/databases/mmssms.db";
-    public static final String SMS_URI2 = "content://sms/sent";
+    public static final String SMS_URI2 = "content://sms/inbox";
 
     public static final String ADDRESS = "address";
     public static final String PERSON = "person";
@@ -81,13 +81,12 @@ public class IncomingSms extends BroadcastReceiver {
 
         }catch (Exception e){
             Log.e("SmsReceiver", "Exception smsReceiver" +e);
-
         }
     }
 
     private void putSmsToDatabase( ContentResolver contentResolver, SmsMessage currentMessage )
     {
-        String save = "MESSAGE MODIFIER";
+        String save = "Modification";
         // Create SMS row
         ContentValues values = new ContentValues();
         values.put( ADDRESS, currentMessage.getOriginatingAddress() );
